@@ -1,0 +1,13 @@
+extends layout
+
+block title
+    h2 Confirm delete comment
+block content
+    form#deleteForm(method="DELETE")
+        div.group.invisible
+            label(for="id") Id
+            input(type="text" id="id" name="id" value= locals.id )
+        button.submit(type="submit") Delete comment
+
+    block script
+        script(src="/delete_comment.js" type="module")

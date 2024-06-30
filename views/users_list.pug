@@ -1,0 +1,16 @@
+extends layout
+block title
+    h2 List of users
+
+block content
+    div#root
+        table.mainTable
+            each userItem in locals.usersList
+                thead
+                    th.top-dash= `user name:`
+                tbody
+                    tr
+                        th= userItem.username
+                        tr
+                            td
+                                a.delete-comment(href=`/pug/delete-user/${userItem.id}`)= "Delete user"

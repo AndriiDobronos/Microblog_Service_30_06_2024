@@ -1,0 +1,114 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    justify-items: center ;
+    background-color: darkgray;
+    width: 80%;
+    /*margin-left: 10%;*/
+}
+.navbar {
+    display: flex;
+    width: 80%;
+    background-color: darkgray;
+    margin: 0 auto;
+    align-items: center;
+}
+a {
+    border: 1px solid black;
+    border-radius: 6px;
+    background: whitesmoke;
+    padding: 6px;
+    margin-left: 40px;
+    cursor:pointer;
+}
+
+.header h1,h2 {
+    margin-left: 6%;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainTable {
+    width: 80%;
+    border: 1px solid darkgray;
+    padding: 10px;
+    background-color: whitesmoke;
+    margin-bottom: 25px;
+}
+
+th {
+    text-align: left;
+}
+
+th.id {
+    padding-right: 15px;
+}
+
+th.title,
+th.cast {
+    min-width: 250px;
+}
+
+a.pressme {
+    padding: 18px;
+    height: 24%;
+    border-radius: 8px;
+    background-color: darkgray;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+form {
+    max-width:calc(80% - 34px);
+    border: 1px solid darkgray;
+    background-color: whitesmoke;
+    padding:16px;
+    margin-left: 10%;
+}
+
+.group {
+    margin-top:12px;
+    margin-bottom: 12px;
+}
+
+.group.invisible {
+    position: absolute;
+    scale: 0;
+}
+
+.submit {
+    margin-left: 20px;
+    padding: 10px;
+    background-color: darkgrey;
+    border-radius: 6px;
+}
+.buttons {
+    display: flex;
+    width: 80%;
+    height: 10vh;
+    margin-left: 10%;
+    background: #decfcf;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.top-dash {
+    border-top: 1px solid black;
+}
+
+.bottom-dash {
+    border-bottom: 1px solid black;
+    color: #0f5132;
+}
+a.comment {
+    border-radius: 6px;
+    background: darkgray;
+}
+.delete-comment {
+    border-radius: 6px;
+    background: #de886b;
+}

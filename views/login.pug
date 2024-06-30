@@ -1,0 +1,19 @@
+extends layout
+block title
+    h2 Please log in
+
+block content
+    form(method="POST")
+        div.group
+            label(for="username") Username
+            input(type="text" id="username" name="username" placeholder="User Name" value=data && data.username required)
+            if errors && errors.username
+                #usernameError.error= errors.username
+        div.group
+            label(for="password_hash") Password
+            input(type="password" id="password_hash" name="password_hash" required)
+            if errors && errors.password_hash
+                #usernameError.error= errors.password_hash
+        if errors && errors.auth
+            #authError.error=errors.auth
+        button(type="submit") Log me in

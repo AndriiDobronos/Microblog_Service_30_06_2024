@@ -1,0 +1,16 @@
+extends layout
+
+block title
+    h2 Confirm delete posts
+block content
+    form#deleteForm(method="DELETE")
+        div.group.invisible
+            label(for="id") Post Id
+            input(type="text" id="id" name="id" value= locals.id )
+        div.group.invisible
+            label(for="commentId") Comments Id
+            input(type="text" id="commentId" name="commentId" value= (locals.commentsList.filter((el) => el.refers_to_post === locals.id).map((el)=>el.id)).join('*') || "")
+        button.submit(type="submit") Delete post
+
+    block script
+        script(src="/delete_post.js" type="module")

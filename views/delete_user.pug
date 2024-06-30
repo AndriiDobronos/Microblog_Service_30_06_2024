@@ -1,0 +1,12 @@
+extends layout
+block title
+    h2 Delete data of user
+block content
+    form#deleteForm(method="DELETE")
+        .group#group
+            label(for="userId") UserId
+            input(type="text" id="userId" placeholder="enter the userId" name="userId" required)
+        button.submit(type="submit") Delete User
+
+block script
+    script(src="/delete_user.js" type="module")

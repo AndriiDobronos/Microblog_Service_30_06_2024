@@ -1,0 +1,31 @@
+extends layout
+
+block headContent
+
+block title
+    h2 The list of my posts
+
+block content
+    div#root
+        table.mainTable
+            thead
+
+            tbody
+                each postItem in locals.postsList.reverse()
+                    tr
+                        th.top-dash= `Title: ${postItem.title}`
+                        tr
+                            td= `Content: ${postItem.content}`
+                            tr
+                                td= `Author: ${postItem.author}`
+                                tr
+                                    td= `Time publication: ${postItem.time_publication}`
+                                    tr.bottom-dash
+                                        td
+                                            a.delete-comment(href=`/pug/delete-my-post/${postItem.id}`)= "Delete post"
+                                        tr
+                                            each commentItem in locals.commentsList.reverse()
+                                                if postItem.title === commentItem.refers_to_post
+                                                    tr.bottom-dash
+                                                        td=`comments: ${commentItem.comment}   author: ${commentItem.username}`
+                                                            a.delete-comment(href=`/pug/delete-comment/${commentItem.id}`)= "Delete comment"

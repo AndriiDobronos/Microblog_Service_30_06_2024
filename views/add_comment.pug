@@ -1,0 +1,27 @@
+extends layout
+block title
+    h2 Create new Comment
+block content
+    form#postPublish(method="POST")
+        div.group
+            label(for="comment") Comment
+            textarea(id="comment" name="comment" placeholder="Comment" value=data && data.comment required)
+            if errors && errors.title
+                #usernameError.error= errors.title
+        div.group.invisible
+            label(for="refers_to_post")
+            input(type="text" id="refers_to_post" name="refers_to_post" value=locals.post)
+            if errors && errors.content
+                #usernameError.error= errors.content
+        div.group.invisible
+            label(for="username")
+            input(type="text" id="username" name="username" value=locals.userName.username)
+        div.group.invisible
+            label(for="time_publication")
+            input(type="text" id="time_publication" name="time_publication")
+        button(type="submit") Publish a comment
+
+        h3= `from : ${locals.userName.username}`
+
+block script
+    script(src="/addTimeOfComment.js" type="module")

@@ -1,0 +1,40 @@
+extends layout
+
+block headContent
+
+block title
+    h2 Microblog Service
+block content
+    div#root
+        table.mainTable
+            each postItem in locals.postsList.reverse()
+                thead
+                    th.top-dash= `author: ${postItem.author}`
+                tbody
+                    tr
+                        th= postItem.title
+                        tr
+                            td= postItem.content
+                            tr
+                                td= postItem.time_publication
+                                tr
+                                if !!locals.userPermit
+                                    if locals.userPermit.role === "user" || "admin"
+                                        td
+                                            a.comment(href=`/pug/add-comment/${postItem.id}`)= "Make new comment"
+                                        tr
+                                        each commentItem in locals.commentsList
+                                            if postItem.id === commentItem.refers_to_post
+                                                tr.bottom-dash
+                                                    td=`comments: ${commentItem.comment}   author: ${commentItem.username}`
+                                else
+                                    tr
+                                        each commentItem in locals.commentsList
+                                            if postItem.id === commentItem.refers_to_post
+                                                tr.bottom-dash
+                                                    td=`comments: ${commentItem.comment}   author: ${commentItem.username}`
+
+
+
+
+
