@@ -38,5 +38,3 @@ EXPOSE 3030
 
 # Run the application.
 CMD npm run server:express
-
-# postgresql://pguser:VOzak5apjpx4INTDNaHhC6gTMGXLJSi0@dpg-cq2282cs1f4s73e4i7rg-a/microblogstorage

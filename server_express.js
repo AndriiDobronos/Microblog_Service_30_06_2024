@@ -46,4 +46,4 @@ app.use(authContextParser);
 
 app.use(morgan(':date :method :url :status'));
 
-app.use('/pug', express.json(), pagesRouter);
+app.use('/', express.json(), pagesRouter);
