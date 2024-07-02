@@ -1,10 +1,14 @@
 const { session: sessionConfig } = require('config');
 
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+//const sessionStore = prisma.session
+
 const expressSession = require('express-session');
 const MongoStorage = require('connect-mongo');
 
 const cookieParams = {
-    httpOnly: true,
+    httpOnly: false, //true,
     sameSite: 'strict',
     secure: sessionConfig.secureCookie
 }

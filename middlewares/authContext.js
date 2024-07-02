@@ -1,11 +1,6 @@
 const {logger: loggerConfig} = require("config");
 const { session: sessionConfig } = require('config');
-// const session = {session: {
-//     secureCookie: false,
-//         cookieName: 'sid',
-//         secret: "secret"
-// }}
-const SESSION_COOKIE_NAME = sessionConfig.cookieName; //'sid'
+const SESSION_COOKIE_NAME = sessionConfig.cookieName;
 const authLogger = require('../utils/logger')('auth context', loggerConfig);
 
 const ROLES = {

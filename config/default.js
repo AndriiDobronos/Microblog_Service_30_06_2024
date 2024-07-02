@@ -9,14 +9,14 @@ module.exports = {
         target: process.env.TARGET_FOLDER
     },
     server: {
-        port: process.env.PORT || 3000
+        port: process.env.PORT || 3030
     },
     data: {
         source: allowedDataSources.includes(envDataSource) ? envDataSource : allowedDataSources[0],
         dbType: process.env.DATABASE_URL.includes('mongo') ? 'mongo' : 'sql'
     },
     session: {
-        secureCookie: isProd, // httpS || http
+        secureCookie: false,//isProd, 
         cookieName: 'sid',
         secret: process.env.SESSION_SECRET || Math.random().toString(36).slice(2)
     }

@@ -142,3 +142,4 @@ target/*
 
 *.db
 uploads
+prisma.shema.copy.txt
