@@ -3,8 +3,8 @@ document.getElementById('deleteForm').addEventListener('submit', async function(
 
     const userId = document.getElementById('userId').value;
 
-    await fetch('/pug/' + userId, {
+    await fetch('/' + userId, {
         method: 'DELETE'});
 
-    window.location.href = '/pug';
+    window.location.href = '/';
 })

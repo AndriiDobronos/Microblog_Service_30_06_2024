@@ -6,21 +6,21 @@ html
         block headContent
     body
         div.navbar
-            a(href="/pug") Home Page
-            a(href="/pug/my-posts") My Posts
+            a(href="/") Home Page
+            a(href="/my-posts") My Posts
             if !!(locals.userPermit)
                 if locals.userPermit.role === "admin"
-                    a(href="/pug/users-list") Users List
+                    a(href="/users-list") Users List
             block title
-            a(href="/pug/logout") Logout
-            a(href="/pug/login") Login
-            a(href="/pug/signup") Signup
+            a(href="/logout") Logout
+            a(href="/login") Login
+            a(href="/signup") Signup
             if !!(locals.userPermit)
                 if locals.userPermit.role === "user" || "admin"
-                    a(href="/pug/add-post") Add post
+                    a(href="/add-post") Add post
                 if !!(locals.userPermit)
                     if locals.userPermit.role === "admin"
-                        a(href="/pug/admin") Admin Service
+                        a(href="/admin") Admin Service
         block content
         block script
 

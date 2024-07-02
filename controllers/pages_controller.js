@@ -34,7 +34,7 @@ async function fetchAddPost(req, resp, next) {
 async function addPostAndRedirect(req, resp, next) {
     try{
         await usersService.addPost(req.body);
-        resp.redirect('/pug');
+        resp.redirect('/');
     }catch (err) {
         next(err);
     }
@@ -57,13 +57,13 @@ async function fetchDeleteMyPost(req,resp,next) {
 async function fetchDeleteCommentAndRedirect(req,resp) {
         const { id } = req.params;
         await usersService.deleteCommentById(id);
-        resp.redirect('/pug');
+        resp.redirect('/');
 }
 
 async function createCommentAndRedirect(req, resp, next) {
     try{
         await  usersService.addComment(req.body)
-        resp.redirect('/pug');
+        resp.redirect('/');
     }catch (err) {
         next(err);
     }
@@ -81,7 +81,7 @@ async function fetchHomePage(req, resp, next) {
 async function fetchMyPost(req, resp, next) {
     const userName = req.session?.context;
     if (!req.__pageContext.isLoggedIn) {
-        resp.redirect('/pug/login')
+        resp.redirect('/login')
     } else {
         const userPermit = req.__pageContext.role
         const postsList = await usersService.findPostsByUserName(userName?.username);
@@ -97,7 +97,7 @@ async function handlerDeletePostAndRedirect(req, resp) {
     const commentId = id.split('*').slice(1)
     await usersService.deletePostById(postId);
     await usersService.deleteCommentById(commentId);
-    resp.redirect('/pug');
+    resp.redirect('/');
 }
 
 module.exports = {

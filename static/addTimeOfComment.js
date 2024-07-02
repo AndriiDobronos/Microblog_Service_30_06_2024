@@ -4,5 +4,5 @@ document.getElementById('postPublish').addEventListener('submit', async function
     const input = document.getElementById('time_publication');
     input.value = date.toLocaleString()
 
-     window.location.href = '/pug';
+     window.location.href = '/';
 })

@@ -6,12 +6,12 @@ document.getElementById('deleteForm').addEventListener('submit', async function(
     //const commentIdProbably = (locals.commentsList.filter((el)=>el.refers_to_post === locals.id)).join('*') || ""
     if(commentIdProbably) {
         const commentId = '*' + commentIdProbably
-        await fetch('/pug/delete-post/' + id + commentId, {
+        await fetch('/delete-post/' + id + commentId, {
             method: 'DELETE'});
     }else {
-        await fetch('/pug/delete-post/' + id , {
+        await fetch('/delete-post/' + id , {
             method: 'DELETE'});
     }
 
-    window.location.href = '/pug';
+    window.location.href = '/';
 })
