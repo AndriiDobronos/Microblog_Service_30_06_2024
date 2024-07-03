@@ -4,7 +4,7 @@ const expressSession = require('express-session');
 const MongoStorage = require('connect-mongo');
 
 const cookieParams = {
-    httpOnly: false, //true,
+    httpOnly: false,
     sameSite: 'strict',
     secure: sessionConfig.secureCookie
 }
@@ -13,7 +13,7 @@ const sessionStore = MongoStorage.create({
     mongoUrl: process.env.SESSION_DATABASE_URL
 })
 
-const sessionMddleware = expressSession({
+const sessionMiddleware = expressSession({
     secret: sessionConfig.secret,
     name: sessionConfig.cookieName,
     cookie: cookieParams,
@@ -23,5 +23,5 @@ const sessionMddleware = expressSession({
 });
 
 module.exports = {
-    sessionMddleware
+    sessionMiddleware
 };

@@ -47,9 +47,13 @@ pagesRouter.route('/login')
         userValidator,
         logUserIn,
         authInitSessionAndRedirect('/'),
-        formErrorHandler,
-        pagesController.renderPage('/add-post')
+        formErrorHandler
     );
+
+pagesRouter.get('/unsuccessful-login',
+    (_req,resp)=> {
+    resp.render('unsuccessful_login');
+});
 
 pagesRouter.get('/my-posts',
     pagesController.fetchMyPost,

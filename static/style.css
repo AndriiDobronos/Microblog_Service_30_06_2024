@@ -32,6 +32,17 @@ a {
     align-items: center;
 }
 
+#red {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #A54B5F;
+    width: calc(80% - 24px);
+    border: 1px solid darkgray;
+    padding: 12px;
+    margin: 0 auto;
+}
+
 .mainTable {
     width: 80%;
     border: 1px solid darkgray;

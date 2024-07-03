@@ -27,8 +27,8 @@ function authDestroySession(req, resp) {
 function authInitSessionAndRedirect(redirectTo) {
     return (req, resp) => {
          authLogger.info(`Creating session for [${req.__authContext.role}] [${req.__authContext.username}]`);
-        req.session.context = req.__authContext;
-        resp.redirect(redirectTo || '/');
+         req.session.context = req.__authContext;
+         resp.redirect(redirectTo || '/');
     };
 }
 

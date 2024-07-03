@@ -9,19 +9,12 @@ const {pagesRouter} = require('./routers/pages');
 const { authContextParser } = require('./middlewares/authContext');
 const cookieParser = require('cookie-parser');
 const app = express();
-const { sessionMddleware } = require('./session');
+const { sessionMiddleware } = require('./session');
 
 if(require.main === module) {
     logger.info('executed as a standalone script');
     app.listen(srvConfig.port, () => logger.info(`server is listening on [${srvConfig.port}] port`));
 }
-
-module.exports = {
-    server_express: ()=> {
-        console.log(`Server started from point: main.js`);
-        app.listen(srvConfig.port, () => logger.info(`server is listening on [${srvConfig.port}] port`));
-    }
-};
 
 const servePath = path.join(process.cwd(), 'logs', 'file.log');
 const stream = rfs.createStream(servePath, {
@@ -36,9 +29,7 @@ app.set('view engine', 'pug');
 
 app.use(express.static('static'));
 
-app.use("/uploads",express.static('uploads'));
-
-app.use(sessionMddleware);
+app.use(sessionMiddleware);
 
 app.use(cookieParser());
 

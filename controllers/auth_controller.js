@@ -9,6 +9,9 @@ async function logUserIn(req, resp, next) {
     const { username, password_hash } = req.body;
     const user = await userService.findByUserName(username);
     if (!user) {
+
+        resp.redirect('/unsuccessful-login')
+
         return next(new AuthError({
             msg: `user [${username}] - invalid creds`,
             errors: { auth: 'Invalid creds!'}
@@ -16,6 +19,9 @@ async function logUserIn(req, resp, next) {
     }
     const isPasswordOk = await bcrypt.compare(password_hash, user.password_hash);
     if (!isPasswordOk) {
+
+        resp.redirect('/unsuccessful-login')
+
         return next(new AuthError({
             msg: `user [${username}] - invalid creds`,
             errors: { auth: 'Invalid creds!' }
