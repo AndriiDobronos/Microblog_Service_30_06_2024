@@ -38,7 +38,6 @@ function authDestroySessionAndRedirect(req, resp) {
         authLogger.info(`Session for [${role}] [${username}] terminated`);
 
         resp.clearCookie(sessionConfig.cookieName);
-        //resp.clearCookie(session.cookieName);
         resp.redirect(req.baseUrl);
     });
 }

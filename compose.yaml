@@ -14,11 +14,11 @@ services:
     environment:
       NODE_ENV: production
       DATA_SOURCE: db
-      # DATABASE_URL: mongodb+srv://admin:admin@cluster1.s3ls7zv.mongodb.net/test-db?authSource=admin
+      DATABASE_URL: mongodb+srv://admin:admin@cluster1.s3ls7zv.mongodb.net/test-db?authSource=admin
       SESSION_DATABASE_URL: mongodb+srv://admin:admin@cluster1.s3ls7zv.mongodb.net/test-db?authSource=admin
       SESSION_SECRET: secret
       # SESSION_DATABASE_URL: postgresql://postgres:pass@db:5432/microblogstorage
-      DATABASE_URL: postgresql://postgres:pass@db:5432/microblogstorage
+      # DATABASE_URL: postgresql://postgres:pass@db:5432/microblogstorage
     ports:
       - 3030:3030
     volumes:

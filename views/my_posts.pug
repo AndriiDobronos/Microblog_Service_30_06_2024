@@ -22,10 +22,10 @@ block content
                                     td= `Time publication: ${postItem.time_publication}`
                                     tr.bottom-dash
                                         td
-                                            a.delete-comment(href=`/pug/delete-my-post/${postItem.id}`)= "Delete post"
+                                            a.delete-comment(href=`/delete-my-post/${postItem.id}`)= "Delete post"
                                         tr
                                             each commentItem in locals.commentsList.reverse()
                                                 if postItem.title === commentItem.refers_to_post
                                                     tr.bottom-dash
                                                         td=`comments: ${commentItem.comment}   author: ${commentItem.username}`
-                                                            a.delete-comment(href=`/pug/delete-comment/${commentItem.id}`)= "Delete comment"
+                                                            a.delete-comment(href=`/delete-comment/${commentItem.id}`)= "Delete comment"

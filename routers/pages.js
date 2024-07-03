@@ -46,7 +46,7 @@ pagesRouter.route('/login')
     .post(formDataParser,
         userValidator,
         logUserIn,
-        authInitSessionAndRedirect(),
+        authInitSessionAndRedirect('/'),
         formErrorHandler,
         pagesController.renderPage('/add-post')
     );

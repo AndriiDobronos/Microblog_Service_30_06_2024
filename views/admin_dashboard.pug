@@ -13,7 +13,7 @@ block content
                 tbody
                     tr
                         th= postItem.title
-                            a.delete-comment(href=`/pug/delete-my-post/${postItem.id}`)= "Delete post"
+                            a.delete-comment(href=`/delete-my-post/${postItem.id}`)= "Delete post"
                         tr
                             td= postItem.content
                             tr
@@ -21,11 +21,11 @@ block content
                                 tr
                                 if locals.userPermit.role === "user" || "admin"
                                     td
-                                        a.comment(href=`/pug/add-comment/${postItem.id}`)= "Make new comment"
+                                        a.comment(href=`/add-comment/${postItem.id}`)= "Make new comment"
                                     tr
                                     each commentItem in locals.commentsList.reverse()
                                         if postItem.id === commentItem.refers_to_post
                                             tr.bottom-dash
                                                 td=`comments: ${commentItem.comment}   author: ${commentItem.username}`
-                                                    a.delete-comment(href=`/pug/delete-comment/${commentItem.id}`)= "Delete comment"
+                                                    a.delete-comment(href=`/delete-comment/${commentItem.id}`)= "Delete comment"
 

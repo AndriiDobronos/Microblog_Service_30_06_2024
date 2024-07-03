@@ -21,7 +21,7 @@ block content
                                 if !!locals.userPermit
                                     if locals.userPermit.role === "user" || "admin"
                                         td
-                                            a.comment(href=`/pug/add-comment/${postItem.id}`)= "Make new comment"
+                                            a.comment(href=`/add-comment/${postItem.id}`)= "Make new comment"
                                         tr
                                         each commentItem in locals.commentsList
                                             if postItem.id === commentItem.refers_to_post
