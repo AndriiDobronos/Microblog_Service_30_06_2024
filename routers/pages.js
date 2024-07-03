@@ -103,7 +103,7 @@ pagesRouter.route('/signup')
     .post(formDataParser,
         userValidator,
         createUserAccount,
-        authInitSessionAndRedirect(),
+        authInitSessionAndRedirect('/'),
         formErrorHandler,
         pagesController.renderPage('signup')
     );

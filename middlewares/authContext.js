@@ -21,14 +21,14 @@ function authContextParser(req, resp, next) {
 
 function authDestroySession(req, resp) {
     resp.clearCookie(SESSION_COOKIE_NAME);
-    resp.redirect(req.baseUrl);
+    resp.redirect('/');
 }
 
 function authInitSessionAndRedirect(redirectTo) {
     return (req, resp) => {
          authLogger.info(`Creating session for [${req.__authContext.role}] [${req.__authContext.username}]`);
         req.session.context = req.__authContext;
-        resp.redirect(redirectTo || req.baseUrl);
+        resp.redirect(redirectTo || '/');
     };
 }
 
@@ -38,7 +38,7 @@ function authDestroySessionAndRedirect(req, resp) {
         authLogger.info(`Session for [${role}] [${username}] terminated`);
 
         resp.clearCookie(sessionConfig.cookieName);
-        resp.redirect(req.baseUrl);
+        resp.redirect('/');
     });
 }
 
@@ -49,7 +49,7 @@ function restrictedResource(availableForRoles = []) {
             return next();
         }
         authLogger.info(`Resource is unavailable for [${role}]!`);
-        resp.redirect(`${req.baseUrl}/login`);
+        resp.redirect(`/login`);
     }
 }
 

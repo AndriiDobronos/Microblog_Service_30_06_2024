@@ -1,9 +1,5 @@
 const { session: sessionConfig } = require('config');
 
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
-//const sessionStore = prisma.session
-
 const expressSession = require('express-session');
 const MongoStorage = require('connect-mongo');
 
