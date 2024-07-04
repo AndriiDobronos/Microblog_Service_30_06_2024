@@ -30,7 +30,7 @@ model Post {
   author           String?
   time_publication String?
 
-  user     User    @relation(fields: [author], references: [username])
+  user     User?    @relation(fields: [author], references: [username])
 }
 
 model Comment {
@@ -40,5 +40,5 @@ model Comment {
   time_publication String?
   refers_to_post   String?
 
-  user     User   @relation(fields: [username], references: [username])
+  user     User?   @relation(fields: [username], references: [username])
 }
