@@ -3,8 +3,8 @@ document.getElementById('deleteForm').addEventListener('submit', async function(
 
     const userId = document.getElementById('userId').value;
 
-    await fetch('/' + userId, {
+    await fetch('/delete-user/' + userId, {
         method: 'DELETE'});
 
-    window.location.href = '/';
+    window.location.href = '/users-list';
 })

@@ -1,12 +1,15 @@
 extends layout
+
 block title
-    h2 Delete data of user
+    h2 Confirm delete user data
 block content
     form#deleteForm(method="DELETE")
-        .group#group
+        div.group.invisible
             label(for="userId") UserId
-            input(type="text" id="userId" placeholder="enter the userId" name="userId" required)
-        button.submit(type="submit") Delete User
-
+            input(type="text" id="userId" name="userId" value= locals.id)
+        button.submit(type="submit") Delete User data
+        div#red
+            h3 Sorry, the service work with partial functionality as it is under development !
+            h3 (posts and comments are not temporarily deleted along with the user)
 block script
     script(src="/delete_user.js" type="module")

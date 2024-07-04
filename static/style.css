@@ -113,7 +113,8 @@ form {
 
 .bottom-dash {
     border-bottom: 1px solid black;
-    color: #0f5132;
+    color: #259101;
+    font-weight: bold; 
 }
 a.comment {
     border-radius: 6px;

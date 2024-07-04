@@ -100,6 +100,16 @@ async function handlerDeletePostAndRedirect(req, resp) {
     resp.redirect('/');
 }
 
+async function handlerDeleteUserAndRedirect(req,resp) {
+    const {id} = req.params;
+    await usersService.deleteUserById(id);
+    // const postId =
+    // const commentId =
+    // await usersService.deletePostById(postId);
+    // await usersService.deleteCommentById(commentId);
+    resp.redirect('/users-list');
+}
+
 module.exports = {
     renderPage,
     addPageContext,
@@ -113,4 +123,5 @@ module.exports = {
     fetchDeleteMyPost,
     fetchDeleteCommentAndRedirect,
     handlerDeletePostAndRedirect,
+    handlerDeleteUserAndRedirect
 };

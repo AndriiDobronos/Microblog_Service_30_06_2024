@@ -120,10 +120,18 @@ pagesRouter.get('/users-list', restrictedResource([ROLES.admin]),
     notFoundErrorHandler
 );
 
-pagesRouter.route('/delete-user')
-    .get((req, resp) => {
-        resp.render('delete_user');
+pagesRouter.get('/delete-user/:id',
+    formDataParser,
+    (req, resp) => {
+        const { id } = req.params;
+        resp.render('delete_user',{id});
     });
+
+pagesRouter.delete('/delete-user/:id',
+    formDataParser,
+    pagesController.handlerDeleteUserAndRedirect
+);
+
 
 pagesRouter.use((_req, resp) => resp.render('404'));
 

@@ -5,7 +5,7 @@ block title
 block content
     div#root
         table.mainTable
-            each userItem in locals.usersList
+            each userItem in locals.usersList.reverse()
                 thead
                     th.top-dash= `user name:`
                 tbody
@@ -13,4 +13,4 @@ block content
                         th= userItem.username
                         tr
                             td
-                                a.delete-comment(href=`/delete-user/${userItem.id}`)= "Delete user"
+                                a.delete-comment(href=`/delete-user/${userItem.id}`)= "Delete user data"

@@ -16,7 +16,7 @@ module.exports = {
         dbType: process.env.DATABASE_URL.includes('mongo') ? 'mongo' : 'sql'
     },
     session: {
-        secureCookie: false,//isProd, 
+        secureCookie: isProd ? false : false,
         cookieName: 'sid',
         secret: process.env.SESSION_SECRET || Math.random().toString(36).slice(2)
     }
