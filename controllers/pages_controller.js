@@ -102,11 +102,7 @@ async function handlerDeletePostAndRedirect(req, resp) {
 
 async function handlerDeleteUserAndRedirect(req,resp) {
     const {id} = req.params;
-    await usersService.deleteUserById(id);
-    // const postId =
-    // const commentId =
-    // await usersService.deletePostById(postId);
-    // await usersService.deleteCommentById(commentId);
+    await usersService.deleteUserDataById(id);
     resp.redirect('/users-list');
 }
 

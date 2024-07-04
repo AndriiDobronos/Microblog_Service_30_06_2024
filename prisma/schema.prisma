@@ -18,6 +18,9 @@ model User {
   username      String @unique
   password_hash String
   role          Role
+
+  posts         Post[]
+  comments      Comment[]
 }
 
 model Post {
@@ -26,6 +29,8 @@ model Post {
   content          String  @default("New content")
   author           String?
   time_publication String?
+
+  user     User    @relation(fields: [author], references: [username])
 }
 
 model Comment {
@@ -34,4 +39,6 @@ model Comment {
   comment          String
   time_publication String?
   refers_to_post   String?
+
+  user     User   @relation(fields: [username], references: [username])
 }

@@ -43,6 +43,52 @@ function deleteCommentById(commentId) {
     }
 }
 
+async function deleteUserDataById(userId) {
+    const user = await prisma.user.findUnique({
+        where: { id: userId },
+        select: { username: true },
+    });
+
+    if (!user) {
+        throw new Error('User not found');
+    }
+    const { username } = user;
+
+    try {
+        const posts = await prisma.post.findMany({
+            where: { author: username },
+            select: { id: true },
+        });
+
+        const comments = await prisma.comment.findMany({
+            where: { username: username },
+            select: { id: true },
+        });
+
+        for (const post of posts) {
+            await prisma.post.delete({
+                where: { id: post.id },
+            });
+        }
+
+        for (const comment of comments) {
+            await prisma.comment.delete({
+                where: { id: comment.id },
+            });
+        }
+
+        await prisma.user.delete({
+            where: { id: userId },
+        });
+
+        console.log(`User with id ${userId} and related data deleted successfully.`);
+    } catch (error) {
+        console.error('Error deleting user data:', error);
+    } finally {
+        await prisma.$disconnect();
+    }
+}
+
 async function deleteUserById(userId) {
     try {
         return await prisma.user.delete({ where: { id: userId } });
@@ -86,6 +132,7 @@ module.exports = {
     getAllUsers,
     getAllPosts,
     getUserById,
+    deleteUserDataById,
     deleteUserById,
     deletePostById,
     deleteCommentById,
