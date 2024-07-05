@@ -26,6 +26,6 @@ block content
                                     each commentItem in locals.commentsList.reverse()
                                         if postItem.id === commentItem.refers_to_post
                                             tr.bottom-dash
-                                                td=`comments: ${commentItem.comment}   author: ${commentItem.username}`
+                                                td=`comments: ${commentItem.comment} \u2003 author: ${commentItem.username}`
                                                     a.delete-comment(href=`/delete-comment/${commentItem.id}`)= "Delete comment"
 

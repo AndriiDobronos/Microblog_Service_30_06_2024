@@ -26,13 +26,13 @@ block content
                                         each commentItem in locals.commentsList
                                             if postItem.id === commentItem.refers_to_post
                                                 tr.bottom-dash
-                                                    td=`comments: ${commentItem.comment}   author: ${commentItem.username}`
+                                                    td=`comments: ${commentItem.comment} \u2003  \u2003 author: ${commentItem.username}`
                                 else
                                     tr
                                         each commentItem in locals.commentsList
                                             if postItem.id === commentItem.refers_to_post
                                                 tr.bottom-dash
-                                                    td=`comments: ${commentItem.comment}   author: ${commentItem.username}`
+                                                    td=`comments: ${commentItem.comment} \u2003 \u2003 author: ${commentItem.username}`
 
 
 
