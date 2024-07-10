@@ -21,7 +21,8 @@ async function formErrorHandler(err, req, resp, next) {
         req.__pageContext = {
             ...req.__pageContext,
             data: req.body,
-            errors: err.errors
+            errors: err.errors,
+            msg: err.message
         }
         delete req.__pageContext.data.password;
         logger.info('Saved metadata in context:', req.__pageContext);
@@ -47,7 +48,8 @@ pagesRouter.route('/login')
         userValidator,
         logUserIn,
         authInitSessionAndRedirect('/'),
-        formErrorHandler
+        formErrorHandler,
+        pagesController.renderPage('login')
     );
 
 pagesRouter.get('/unsuccessful-login',

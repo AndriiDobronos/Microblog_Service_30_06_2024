@@ -8,27 +8,22 @@ const { ROLES } = require('../middlewares/authContext');
 async function logUserIn(req, resp, next) {
     const { username, password_hash } = req.body;
     const user = await userService.findByUserName(username);
+    const err = new AuthError({
+        msg: `user [${username}] - invalid creds`,
+        errors: { auth: 'Invalid creds!' }
+    });
+
     if (!user) {
 
-        resp.redirect('/unsuccessful-login')
-
-        return next(new AuthError({
-            msg: `user [${username}] - invalid creds`,
-            errors: { auth: 'Invalid creds!'}
-        }));
+        return next(err);
     }
     const isPasswordOk = await bcrypt.compare(password_hash, user.password_hash);
     if (!isPasswordOk) {
 
-        resp.redirect('/unsuccessful-login')
-
-        return next(new AuthError({
-            msg: `user [${username}] - invalid creds`,
-            errors: { auth: 'Invalid creds!' }
-        }));
+        return next(err);
     }
     const role = user.role || ROLES.user;
-    req.__authContext = { username, role };
+    req.__authContext = { username, role, err };
     authLogger.info(`user [${username}] with role [${role}] - successfully logged in`);
     next();
 }

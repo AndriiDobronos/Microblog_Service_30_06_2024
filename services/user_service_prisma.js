@@ -55,32 +55,17 @@ async function deleteUserDataById(userId) {
     const { username } = user;
 
     try {
-        const posts = await prisma.post.findMany({
+        await prisma.post.deleteMany({
             where: { author: username },
-            select: { id: true },
         });
 
-        const comments = await prisma.comment.findMany({
+        await prisma.comment.deleteMany({
             where: { username: username },
-            select: { id: true },
         });
-
-        for (const post of posts) {
-            await prisma.post.delete({
-                where: { id: post.id },
-            });
-        }
-
-        for (const comment of comments) {
-            await prisma.comment.delete({
-                where: { id: comment.id },
-            });
-        }
 
         await prisma.user.delete({
             where: { id: userId },
         });
-
         console.log(`User with id ${userId} and related data deleted successfully.`);
     } catch (error) {
         console.error('Error deleting user data:', error);

@@ -13,4 +13,5 @@ block content
                         th= userItem.username
                         tr
                             td
-                                a.delete-comment(href=`/delete-user/${userItem.id}`)= "Delete user data"
+                                if userItem.role !== "admin"
+                                    a.delete-comment(href=`/delete-user/${userItem.id}`)= "Delete user data"

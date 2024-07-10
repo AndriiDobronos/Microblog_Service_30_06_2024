@@ -12,15 +12,18 @@ html
                 if locals.userPermit.role === "admin"
                     a(href="/users-list") Users List
             block title
-            a(href="/logout") Logout
-            a(href="/login") Login
-            a(href="/signup") Signup
+            if !(locals.userPermit)
+                a(href="/login") Login
+                a(href="/signup") Signup
+                //if !!(locals.userPermit)
+            else if locals.userPermit.role === "user" || "admin"
+                a(href="/logout") Logout
+                a(href="/add-post") Add post
             if !!(locals.userPermit)
-                if locals.userPermit.role === "user" || "admin"
-                    a(href="/add-post") Add post
-                if !!(locals.userPermit)
-                    if locals.userPermit.role === "admin"
-                        a(href="/admin") Admin Service
+                if locals.userPermit.role === "admin"
+                    a(href="/admin") Admin Service
+
+
         block content
         block script
 
