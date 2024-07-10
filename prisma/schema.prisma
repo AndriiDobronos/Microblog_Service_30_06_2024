@@ -39,6 +39,7 @@ model Comment {
   comment          String
   time_publication String?
   refers_to_post   String?
+  created_at       DateTime  @default(now())
 
   user     User?   @relation(fields: [username], references: [username])
 }
